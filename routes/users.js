@@ -19,13 +19,19 @@ router.post('/', [
     check('email', 'Please include a valid email')
     .isEmail(),
     check('password', 'Please enter a password with 8 or more characters')
-    .isLength({ min: 8 })
+    .isLength({ min: 8 }),
+    check('carbsGoal', 'Please enter your daily carbs goal')
+    .not()
+    .isEmpty(),
+    check('fatGoal', 'Please enter your daily fat goal')
+    .not()
+    .isEmpty(),
 ], async (req, res) =>{
     const errors = validationResult(req);
     if(!errors.isEmpty()){
         return res.status(400).json({ errors: errors.array() })
     }
-    const{ name, email, password } = req.body;
+    const{ name, email, password, carbsGoal, fatGoal } = req.body;
     
     try {
         let user = await User.findOne({ email });
@@ -37,7 +43,9 @@ router.post('/', [
         user = new User({
             name,
             email,
-            password
+            password,
+            carbsGoal,
+            fatGoal
         });
 
         const salt = await bcrypt.genSalt(10)

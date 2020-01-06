@@ -5,8 +5,8 @@ const auth = require("../middelware/auth");
 
 const User = require('../models/User')
 const Food = require ('../models/Food')
-//@route            GET  api/contacts
-//@description      Get all users contacts
+//@route            GET  api/food
+//@description      Get all users food
 //@access           Private
 router.get('/', auth, async(req, res)=>{
     try{
@@ -15,12 +15,12 @@ router.get('/', auth, async(req, res)=>{
 
     }catch(err){
         console.error(err.message);
-        res.status(500).send('Server Error');
+        res.status(500).json({msg:'Server Error'});
     }
 });
 
 //@route            POST  api/users
-//@description      Add new contact
+//@description      Add new food
 //@access           Private
 router.post('/', auth, [ [
     check('name', 'Name is required')
@@ -32,12 +32,13 @@ router.post('/', auth, [ [
     if(!errors.isEmpty()){
         return res.status(400).json({ errors: errors.array() })
     }
-    const { name, carbs, fat } = req.body;
+    const { name, carbs, fat, date } = req.body;
     try {
         const newFood = new Food({
             name,
             carbs,
             fat,
+            date,
             user: req.user.id
         });
 
@@ -50,52 +51,22 @@ router.post('/', auth, [ [
     }
 });
 
-//@route            PUT  api/contacts/:id
-//@description      update contact
-//@access           Private
-router.put('/:id', auth, async(req, res)=>{
-    const { name, carbs, fat } = req.body;
-    //build a contact object
-    const contactFields = {};
-    if(name) contactFields.name = name;
-    if(carbs) contactFields.carbs = email;
-    if(fat) contactFields.fat = phone;
 
-    try {
-        let food = await Food.findById(req.params.id);
-        if(!food) return res.status(404).json({ msg: 'Contact not found'});
-
-        //Make sure user owns contact
-        if(food.user.toString() !== req.user.id){
-            return res.status(401).jason({ msg: 'Not authorized'});
-        }
-        food = await Food.findByIdAndUpdate(req.params.id,
-             { $set:contactFields},
-              {new: true})
-
-
-            res.json(contact);
-
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-});
 
 // //@route            DELETE  api/users/:id
-// //@description      delete contact
+// //@description      delete food
 // //@access           Private
 router.delete('/:id', auth, async(req, res)=>{
     try {
         let food = await Food.findById(req.params.id);
-        if(!food) return res.status(404).json({ msg: 'Contact not found'});
+        if(!food) return res.status(404).json({ msg: 'Food not found'});
 
-        //Make sure user owns contact
+        //Make sure user owns food
         if(food.user.toString() !== req.user.id){
             return res.status(401).json({ msg: 'Not authorized'});
         }
         await Food.findByIdAndRemove(req.params.id);
-            res.json({ msg: "Contact removed "});
+            res.json({ msg: "Food removed "});
 
     } catch (err) {
         console.error(err.message);

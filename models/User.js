@@ -14,10 +14,19 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    carbsGoal:{
+        type: Number,
+        required: true
+    },
+    fatGoal:{
+        type: Number,
+        required: true
+    },
     date: {
         type: Date,
         default: Date.now
     }
+
 })
 
 module.exports = mongoose.model('user', UserSchema)
