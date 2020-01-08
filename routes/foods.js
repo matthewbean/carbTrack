@@ -10,7 +10,7 @@ const Food = require ('../models/Food')
 //@access           Private
 router.get('/', auth, async(req, res)=>{
     try{
-        const foods = await Food.find({ user: req.user.id}).sort({ date: -1})
+        const foods = await Food.find({ user: req.user.id}).sort({ date: 1})
         res.json(foods)
 
     }catch(err){
