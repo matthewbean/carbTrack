@@ -32,15 +32,15 @@ const Foods = () => {
 
 
     return (
-        <div className = "col-sm container">
-                 
+        <div className = "col-sm container ">
+            <div className = "text-center m-3">     
              <label htmlFor="start">Select date:</label>
    
          <input type="date" id="start" name="day"
         defaultValue = {date}
         onChange = {onChange}
         min="2020-01-01" max={parseDate(today)} /> 
-        
+            </div>
 
         
         <ul className = "normal">
@@ -51,6 +51,7 @@ const Foods = () => {
         </ul>
         
         <DailyTotals />
+        
         
         </div>
     )

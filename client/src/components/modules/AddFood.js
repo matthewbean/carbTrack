@@ -50,12 +50,13 @@ const onSubmit = e=> {
         
         <form onSubmit = {onSubmit} className = "col-sm">
             <Alerts />
-            <h2 className = "text-primary">
+            <h2 className = "text-primary text-center">
                 Add Food
             </h2>
-            <div className = "input-group">
+            <div className = "input-group mb-2">
 
             <input 
+            className = " rounded m-auto"
             type = "text" 
             placeholder = "Food" 
             name = "name"
@@ -63,38 +64,34 @@ const onSubmit = e=> {
             onChange = {onChange} />
             </div>
 
-            <div className = "input-group">
-
+            <div className = "input-group mb-2">
+            
              <input
+             className = "rounded m-auto"
              type = "text" 
             placeholder = "Carbs" 
             name = "carbs"
             value = {carbs}
             onChange = {onChange} />
-                <div className="input-group-append">
-            <span className="input-group-text">g</span>
-                </div>
             </div>
 
-            <div className = "input-group btn-block">
+            <div className = "input-group btn-block mb-2">
 
 
              <input
+             className = "rounded m-auto"
              type = "text" 
             placeholder = "Fat" 
             name = "fat"
             value = {fat}
             onChange = {onChange} />
-                            <div className="input-group-append">
-            <span className="input-group-text">g</span>
-                </div>
             </div>
             
            
-        <div className = "input-group">
+        <div className = "input-group m-auto">
             <input type = "submit"
             value = {"Add Food"}
-            className = "btn btn-primary"
+            className = "btn btn-primary m-auto"
             />
         </div>
         </form>
