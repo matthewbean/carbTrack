@@ -15,41 +15,49 @@ function Navbar() {
     }
     const authLinks =(
         <Fragment>
-            <li className = "nav-link ml-auto">Hello {user && user.name }</li>
-            <li className = "nav-item">
-                <a className = "nav-link text-dark" onClick= {onLogout} href ="#!">
-                    Logout
-                </a>
+            <li>
+            <Link to = '/' className = "nav-link text-dark">Home</Link>
             </li>
+
             <li>
             <Link to = '/stats' className = "nav-link text-dark">Stats</Link>
+            </li>
+
+            <li>
+            <Link to = '/about' className = "nav-link text-dark">About</Link>
+            </li>
+            <li className = "nav-link ml-auto">Hello {user && user.name }</li>
+            <li className = "nav-item">
+                <a className = "nav-link text-dark font-weight-bold" onClick= {onLogout} href ="/login">
+                Logout <i class="fas fa-arrow-circle-right"></i>
+                </a>
             </li>
         </Fragment>
     )
     const guestLinks =(
         <Fragment>
-                <li className = "nav-item ml-auto">
-                    <Link to ='/register' className = " nav-link text-dark">Register</Link>
-                </li>
-                <li className = "nav-item">
-                    <Link to ='/login' className = " nav-link text-dark">Login</Link>
-                </li>
-        </Fragment>
-    )
-
-    return (
-        <nav className="nav  navbar-light bg-info justify-content-right">
-            <li className = "nav-item">
-            <Link to = '/' className = " nav-link text-dark">Carb<strong>Trak</strong></Link>
+            <li>
+            <Link to = '/' className = "nav-link text-dark">Home</Link>
             </li>
-
-            {isAuthenticated ? authLinks : guestLinks}
             <li>
             
             <Link to = '/about' className = "nav-link text-dark">About</Link>
             </li>
+        </Fragment>
+    )
+
+    return (
+        <nav className="nav  navbar-light bg-primary justify-content-right">
+            <li className = "nav-item">
+            <Link to = '/' className = " nav-link text-dark">Carb<strong>Trak</strong></Link>
+            </li>
+
+
+            {isAuthenticated ? authLinks : guestLinks}
+
         </nav>
     )
 }
 
 export default Navbar
+
