@@ -17,7 +17,7 @@ import{
 const FoodState = props => { 
 
 
-const getWeek = (base)=>{
+const getWeek = (base, user)=>{
 
         let result = [];
     for( let i = 6; i >= 0; i--){
@@ -25,7 +25,11 @@ const getWeek = (base)=>{
         let new_date = new Date(prev_date.setDate(prev_date.getDate() - i));
         new_date = parseDate(new_date);
         getTotalCarbs(new_date);
-        let item = {"date":new_date.substring(5,11), "fat":getTotalFat(new_date), "carbs": getTotalCarbs(new_date)};
+        let item = {"date":new_date.substring(5,11), 
+        "fat":getTotalFat(new_date), 
+        "carbs": getTotalCarbs(new_date), 
+        "carbsGoal": user.carbsGoal, 
+        "fatGoal": user.fatGoal};
         result.push(item)
     }
 

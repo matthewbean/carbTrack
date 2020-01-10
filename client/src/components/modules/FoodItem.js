@@ -14,16 +14,19 @@ const FoodItem = ({ food }) => {
     }
 
     return (
-        <li className = "list-unstyled bg-light px-2 my-2 row border rounded">
-            <div className = "p-1 col-sm justify-content-start">
-            <div>Food: {name} </div>
-            <div><button className = "btn btn-danger btn-sm" onClick = {onDelete} >
-            <i className="far fa-trash-alt"></i>
-                </button></div>
+        <li className = "list-unstyled bg-light px-2 my-2 border rounded ">
+
+            <div className = "   d-flex">
+            <div >Food: {name}  </div>
+            <div className = "ml-auto">Carbs: {carbs} </div>
             </div>
-            <div className = "col-med justify-content-end">  
-                <div>Carbs: {carbs} </div>
-                <div>Fat: {fat}</div>
+
+
+            <div className = "d-flex">
+            <button className = "btn btn-danger btn-sm" onClick = {onDelete} >
+            <i className="far fa-trash-alt"></i>
+                </button>
+                <div className = "ml-auto">Fat: {fat}</div>
             </div>
         </li>
     )
