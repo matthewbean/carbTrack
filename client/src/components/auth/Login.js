@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import AuthContext from '../../context/author/authContext';
 import AlertContext from '../../context/alert/alertContext';
 import Alerts from '../layout/Alerts'
@@ -70,6 +71,7 @@ const Login = (props) => {
                 </div>
                 <input type="submit" value = "Login" className="btn btn-primary" />
             </form>
+            <div className = "mt-2">Don't have an account? <Link to ='/register' >Create one now</Link></div>
             </div>
         </div>
 
