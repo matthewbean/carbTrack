@@ -2,6 +2,11 @@ export const ADD_FOOD = "ADD_FOOD";
 export const SET_ALERT = "SET_ALERT";
 export const REMOVE_ALERT = "REMOVE_ALERT";
 export const CLEAR_ALERTS = "CLEAR_ALERTS";
+export const SHOW_CHANGE = "SHOW_CHANGE";
+export const HIDE_CHANGE = "HIDE_CHANGE";
+export const SUBMIT_GOALS = "SUBMIT_GOALS"
+export const USER_NOT_FOUND = "USER_NOT_FOUND"
+
 
 
 

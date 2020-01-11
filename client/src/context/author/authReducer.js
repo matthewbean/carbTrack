@@ -6,7 +6,11 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    SHOW_CHANGE,
+    HIDE_CHANGE,
+    USER_NOT_FOUND,
+    SUBMIT_GOALS
 } from '../types'
 
 
@@ -33,6 +37,7 @@ export default (state, action) => {
         case AUTH_ERROR:
         case LOGIN_FAIL:
         case LOGOUT:
+        
             localStorage.removeItem('token');
             return{
                 ...state,
@@ -41,12 +46,33 @@ export default (state, action) => {
                 loading:false,
                 user:null,
                 error: action.payload
-            }            
+            }   
+        case USER_NOT_FOUND:
+            return{
+                ...state,
+                error:action.payload
+            }         
             
         case CLEAR_ERRORS:
             return{
                 ...state, 
                 error: null
+            }
+        case SHOW_CHANGE:
+            return{
+                ...state,
+                showChange: true
+            }
+        case HIDE_CHANGE:
+            return{
+                ...state,
+                showChange: false
+            }
+        case SUBMIT_GOALS:
+            return{
+                ...state,
+                showChange: false,
+                user: action.payload
             }
         default:
             return state

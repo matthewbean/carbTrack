@@ -7,7 +7,7 @@ function Navbar() {
     const authContext = useContext(AuthContext);
     const foodContext = useContext(FoodContext);
 
-    const{ isAuthenticated, logout, user} = authContext;
+    const{ isAuthenticated, logout } = authContext;
     const { clearFoods } = foodContext;
     const onLogout = () =>{
         logout();
@@ -26,10 +26,9 @@ function Navbar() {
             <li>
             <Link to = '/about' className = "nav-link text-dark">About</Link>
             </li>
-            <li className = "nav-link ml-auto">Hello {user && user.name }</li>
-            <li className = "nav-item">
+            <li className = "nav-item ml-auto">
                 <a className = "nav-link text-dark font-weight-bold" onClick= {onLogout} href ="/login">
-                Logout <i class="fas fa-arrow-circle-right"></i>
+                Logout <i className ="fas fa-arrow-circle-right"></i>
                 </a>
             </li>
         </Fragment>

@@ -65,4 +65,35 @@ router.post('/', [
     }
 });
 
+//@route            PUT  api/auth
+//@description      change goals
+//@access           Public
+router.put('/', auth, async(req, res)=>{
+    const { carbsGoal, fatGoal, id } = req.body;
+    //build a contact object
+    const goalFields = {};
+     goalFields.carbsGoal = carbsGoal;
+     goalFields.fatGoal = fatGoal;
+
+
+    try {
+        let user = await User.findById(id);
+        if(!user) return res.status(404).json({ msg: 'User not found'});
+
+        //Make sure user owns contact
+
+        user = await User.findByIdAndUpdate(id,
+             { $set:goalFields},
+              {new: true})
+
+
+            res.json(user);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+
 module.exports = router;

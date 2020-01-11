@@ -8,8 +8,7 @@ import{
     GET_FOODS,
     DELETE_FOOD,
     CLEAR_FOODS,
-    CHANGE_DATE,
-    SET_WEEK
+    CHANGE_DATE
 } from '../types'
 
 
@@ -97,7 +96,6 @@ const today = new Date();
             const res = await axios.get('/api/foods');
             dispatch({ type: GET_FOODS, 
                 payload:res.data });
-                const time = new Date();
         
         } catch (err) {
             dispatch({ type: FOOD_ERROR,

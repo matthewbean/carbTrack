@@ -19,4 +19,10 @@ code {
 .max{
   max-width: 800px !important;
 }
-
+.small-text{
+  font-size: .75rem;
+}
+.small-size{
+  padding:0 !important;
+  padding-bottom: .2rem !important;
+}

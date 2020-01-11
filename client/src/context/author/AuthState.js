@@ -11,7 +11,11 @@ import{
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    SHOW_CHANGE,
+    HIDE_CHANGE,
+    SUBMIT_GOALS,
+    USER_NOT_FOUND
 
 } from '../types'
 
@@ -21,7 +25,8 @@ const AuthState = props=>{
         isAuthenticated: null,
         loading: true,
         user: null,
-        error: null
+        error: null,
+        showChange: false
     };
     const [state, dispatch] = useReducer(authReducer, initialState);
 
@@ -92,6 +97,32 @@ const AuthState = props=>{
     //clear errors
     const clearErrors = () =>dispatch({type:CLEAR_ERRORS});
 
+    //show change goals
+    const changeShowChange = ()=> dispatch({type: SHOW_CHANGE});
+
+    //hide change goals
+    const hideShowChange = ()=> dispatch({type: HIDE_CHANGE})
+
+    //Submit change goals
+    const submitGoals = async (goals) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        try {
+            const res = await axios.put('/api/auth', goals, config);
+            dispatch({ type: SUBMIT_GOALS, 
+                payload:res.data });
+        
+        } catch (err) {
+            dispatch({ type: USER_NOT_FOUND,
+            payload: err.response.msg})
+        }
+        
+    }
+
     return (
         <AuthContext.Provider value = {{
             token: state.token,
@@ -99,11 +130,17 @@ const AuthState = props=>{
             loading: state.loading,
             user: state.user,
             error: state.error,
+            showChange: state.showChange,
             register,
             loadUser,
             login,
             logout,
-            clearErrors
+            clearErrors,
+            changeShowChange,
+            hideShowChange,
+            submitGoals
+            
+            
 
         }}>
             

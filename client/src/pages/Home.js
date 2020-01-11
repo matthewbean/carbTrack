@@ -4,6 +4,7 @@ import AddFood from '../components/modules/AddFood';
 
 
 
+
 import AuthContext from '../context/author/authContext';
 
 
@@ -11,17 +12,22 @@ import AuthContext from '../context/author/authContext';
 function Home() {
     const authContext = useContext(AuthContext);
 
+    const { loadUser, user } = authContext;
+
     useEffect(()=> {
-        authContext.loadUser();
+        loadUser();
         //eslint-disable-next-line
     }, []);
 
+ 
 
     return (
         <div className = "container">
+            {user && <h2 className = "text-center m-2">Greetings {user.name} </h2>}
             <div className = "row">
                 <AddFood />
-                <Foods />  
+                <Foods /> 
+
             </div>
             
         </div>

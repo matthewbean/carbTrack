@@ -3,6 +3,7 @@ import FoodItem from './FoodItem';
 import FoodContext from '../../context/food/foodContext';
 import AuthContext from '../../context/author/authContext';
 import DailyTotals from './DailyTotals';
+import ChangeGoals from '../modules/ChangeGoals'
 
 
 
@@ -10,9 +11,9 @@ const Foods = () => {
     const foodContext = useContext(FoodContext);
     const authContext = useContext(AuthContext);
 
-    const{ user } = authContext;
+    const{ user, showChange } = authContext;
     
-    const { foods, getFoods, setDate, date, parseDate, unparseDate } = foodContext;
+    const { foods, getFoods, setDate, date, parseDate } = foodContext;
     const today = new Date();
     
     
@@ -32,7 +33,7 @@ const Foods = () => {
 
 
     return (
-        <div className = "col-sm container ">
+        <div className = "col-sm container">
             <div className = "text-center m-3">     
              <label htmlFor="start">Select date:</label>
    
@@ -51,6 +52,8 @@ const Foods = () => {
         </ul>
         
         <DailyTotals />
+        {user !== null && showChange && <ChangeGoals />}
+        
         
         
         </div>
