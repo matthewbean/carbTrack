@@ -32,7 +32,10 @@ const onSubmit = e=> {
         setAlert("Please only enter numbers for carbs and fat", "danger")
     }else{
     food.date = new Date(unparseDate(date));
- console.log(food);
+
+    console.log(unparseDate(date));
+
+ console.log(new Date(unparseDate(date)));
     addFood(food);
     setFood({
         name: '',
@@ -94,6 +97,7 @@ const onSubmit = e=> {
             className = "btn btn-primary m-auto"
             />
         </div>
+
         </form>
 
     )

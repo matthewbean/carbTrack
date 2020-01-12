@@ -45,7 +45,7 @@ const getWeek = (base, user)=>{
 
 
 const unparseDate = (y)=>{
-    return(y.substring(5,7) + " " + y.substring(8,10) + " " + y.substring(0,4))
+    return(y.split("-"));
 }
 
 const parseDate = (x)=>{

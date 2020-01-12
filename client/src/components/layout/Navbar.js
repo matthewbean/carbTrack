@@ -15,9 +15,7 @@ function Navbar() {
     }
     const authLinks =(
         <Fragment>
-            <li>
-            <Link to = '/' className = "nav-link text-dark">Home</Link>
-            </li>
+
 
             <li>
             <Link to = '/stats' className = "nav-link text-dark">Stats</Link>
@@ -27,7 +25,7 @@ function Navbar() {
             <Link to = '/about' className = "nav-link text-dark">About</Link>
             </li>
             <li className = "nav-item ml-auto">
-                <a className = "nav-link text-dark font-weight-bold" onClick= {onLogout} href ="/login">
+                <a className = "nav-link text-dark font-weight-bold" onClick= {onLogout} href ="/">
                 Logout <i className ="fas fa-arrow-circle-right"></i>
                 </a>
             </li>
@@ -35,9 +33,6 @@ function Navbar() {
     )
     const guestLinks =(
         <Fragment>
-            <li>
-            <Link to = '/' className = "nav-link text-dark">Home</Link>
-            </li>
             <li>
             
             <Link to = '/about' className = "nav-link text-dark">About</Link>
