@@ -31,11 +31,11 @@ const onSubmit = e=> {
     }else if(!reg.test(carbs) || !reg.test(fat)){
         setAlert("Please only enter numbers for carbs and fat", "danger")
     }else{
-    food.date = new Date(unparseDate(date));
+        let day = unparseDate(date);
+        console.log(day)
+    food.date = new Date(day[0], day[1], day[2]);
+    console.log(food);
 
-    console.log(unparseDate(date));
-
- console.log(new Date(unparseDate(date)));
     addFood(food);
     setFood({
         name: '',
