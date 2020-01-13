@@ -19,8 +19,9 @@ const FoodState = props => {
 const getWeek = (base, user)=>{
 
         let result = [];
-    for( let i = 6; i >= 0; i--){
-        let prev_date = new Date(unparseDate(base));
+    for( let i = 6; i >= 0; i--){        
+        let day = unparseDate(base);
+        let prev_date = new Date(day[0], day[1], day[2]);
         let new_date = new Date(prev_date.setDate(prev_date.getDate() - i));
         new_date = parseDate(new_date);
         getTotalCarbs(new_date);

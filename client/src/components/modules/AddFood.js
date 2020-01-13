@@ -32,9 +32,8 @@ const onSubmit = e=> {
         setAlert("Please only enter numbers for carbs and fat", "danger")
     }else{
         let day = unparseDate(date);
-        console.log(day)
+        
     food.date = new Date(day[0], day[1], day[2]);
-    console.log(food);
 
     addFood(food);
     setFood({
